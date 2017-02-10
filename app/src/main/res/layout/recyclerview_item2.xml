@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/recyclerView_item2_ImageView"
+        android:layout_width="70dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/recyclerView_item2_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="招牌水果茶"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/recyclerView_item2_Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="￥ 16.00"
+        android:textColor="#ff0000"
+        android:layout_below="@+id/recyclerView_item2_Title"
+        android:layout_toRightOf="@+id/recyclerView_item2_ImageView"
+        android:layout_toEndOf="@+id/recyclerView_item2_ImageView"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/recyclerView_item2_Price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="￥ 14.00"
+        android:layout_alignTop="@+id/recyclerView_item2_Price"
+        android:layout_toRightOf="@+id/recyclerView_item2_Price"
+        android:layout_toEndOf="@+id/recyclerView_item2_Price"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
+
+    <TextView
+        android:id="@+id/recyclerView_item2_Price3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="立减￥ 2.00元"
+        android:background="@drawable/wenzikuang"
+        android:layout_below="@+id/recyclerView_item2_Price"
+        android:layout_alignLeft="@+id/recyclerView_item2_Title"
+        android:layout_alignStart="@+id/recyclerView_item2_Title"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+</RelativeLayout>
