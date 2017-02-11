@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/fragment_imaegView"
+        android:layout_width="100dp"
+        android:layout_height="120dp" />
+
+    <TextView
+        android:id="@+id/fragment_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="￥ 10.00"
+        android:layout_below="@+id/fragment_title"
+        android:layout_alignLeft="@+id/fragment_title"
+        android:layout_alignStart="@+id/fragment_title"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="拿铁咖啡"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#ff0000"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/fragment_imaegView"
+        android:layout_toEndOf="@+id/fragment_imaegView" />
+
+    <TextView
+        android:id="@+id/fragment_price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="￥ 20.00"
+        android:layout_alignBaseline="@+id/fragment_price"
+        android:layout_alignBottom="@+id/fragment_price"
+        android:layout_toRightOf="@+id/fragment_title"
+        android:layout_toEndOf="@+id/fragment_title"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <TextView
+        android:id="@+id/fragment_youhui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="立减￥ 20.00元"
+        android:layout_alignBaseline="@+id/fragment_price2"
+        android:layout_alignBottom="@+id/fragment_price2"
+        android:layout_toRightOf="@+id/fragment_price2"
+        android:layout_toEndOf="@+id/fragment_price2"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
+
+
+</RelativeLayout>

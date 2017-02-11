@@ -3,10 +3,10 @@ package com.bwie.moon;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private FavorableFragment mFavorableFragment;
     private ShoppingFragment mShoppingFragment;
     private MyselfFragment mMyselfFragment;
+    private TextView textView;
+    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void initView() {
-
+        textView = (TextView) findViewById(R.id.text1);
     }
 
     private void addNavigation() {
@@ -58,49 +60,76 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
      * 设置默认的
      */
     private void setDefaultFragment() {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        mLocationFragment = LocationFragment.newInstance("位置");
-        transaction.replace(R.id.fr, mLocationFragment);
-        transaction.commit();
+        manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+        mLocationFragment = LocationFragment.newInstance("mLocationFragment");
+        mFavorableFragment=mFavorableFragment.newInstance("mFavorableFragment");
+        mShoppingFragment=mShoppingFragment.newInstance("mShoppingFragment");
+        mMyselfFragment=mMyselfFragment.newInstance("mMyselfFragment");
+//        transaction.replace(R.id.fr, mLocationFragment);
+        manager.beginTransaction().add(R.id.fr,mFavorableFragment).commit();
+        manager.beginTransaction().add(R.id.fr,mShoppingFragment).commit();
+        manager.beginTransaction().add(R.id.fr,mMyselfFragment).commit();
+        manager.beginTransaction().add(R.id.fr,mLocationFragment).commit();
+        manager.beginTransaction().hide(mShoppingFragment).commit();
+        manager.beginTransaction().hide(mFavorableFragment).commit();
+        manager.beginTransaction().hide(mMyselfFragment).commit();
+//        transaction.commit();
     }
 
     @Override
     public void onTabSelected(int position) {
         Log.d("TAG", "onTabSelected() called with: " + "position = [" + position + "]");
-        FragmentManager fm = this.getSupportFragmentManager();
+//        FragmentManager fm = this.getSupportFragmentManager();
         //开启事务
-        FragmentTransaction transaction = fm.beginTransaction();
+//        FragmentTransaction transaction = fm.beginTransaction();
         switch (position) {
             case 0:
                 if (mLocationFragment == null) {
                     mLocationFragment = LocationFragment.newInstance("位置");
                 }
-                transaction.replace(R.id.fr, mLocationFragment);
+                manager.beginTransaction().show(mLocationFragment).commit();
+                manager.beginTransaction().hide(mFavorableFragment).commit();
+                manager.beginTransaction().hide(mMyselfFragment).commit();
+                manager.beginTransaction().hide(mShoppingFragment).commit();
+                textView.setText("月光茶人");
                 break;
             case 1:
                 if (mFavorableFragment == null) {
                     mFavorableFragment = mFavorableFragment.newInstance("发现");
                 }
-                transaction.replace(R.id.fr, mFavorableFragment);
+                manager.beginTransaction().hide(mLocationFragment).commit();
+                manager.beginTransaction().show(mFavorableFragment).commit();
+                manager.beginTransaction().hide(mMyselfFragment).commit();
+                manager.beginTransaction().hide(mShoppingFragment).commit();
+                textView.setText("优惠");
                 break;
             case 2:
                 if (mShoppingFragment == null) {
                     mShoppingFragment = mShoppingFragment.newInstance("爱好");
                 }
-                transaction.replace(R.id.fr, mShoppingFragment);
+                textView.setText("购物车");
+                manager.beginTransaction().hide(mLocationFragment).commit();
+                manager.beginTransaction().hide(mFavorableFragment).commit();
+                manager.beginTransaction().hide(mMyselfFragment).commit();
+                manager.beginTransaction().show(mShoppingFragment).commit();
                 break;
             case 3:
                 if (mMyselfFragment == null) {
                     mMyselfFragment = mMyselfFragment.newInstance("图书");
                 }
-                transaction.replace(R.id.fr, mMyselfFragment);
+                textView.setText("我的");
+                manager.beginTransaction().hide(mLocationFragment).commit();
+                manager.beginTransaction().hide(mFavorableFragment).commit();
+                manager.beginTransaction().show(mMyselfFragment).commit();
+                manager.beginTransaction().hide(mShoppingFragment).commit();
+
                 break;
             default:
                 break;
         }
         // 事务提交
-        transaction.commit();
+//        transaction.commit();
 
     }
 

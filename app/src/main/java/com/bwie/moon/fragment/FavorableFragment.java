@@ -1,5 +1,6 @@
 package com.bwie.moon.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -71,6 +72,7 @@ public class FavorableFragment extends Fragment {
         viewPager.setAdapter(new MyPageAdapter(getActivity().getSupportFragmentManager(),list,titles,getContext()));
 //        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setSelectedTabIndicatorColor(Color.RED);
     }
     public void addFragment(){
         list.clear();
